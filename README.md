@@ -30,7 +30,7 @@ Rscript run_deseq2.R \
     path/to/counts_table.txt \
     path/to/metadata.txt \
     path/to/output.tsv \
-    --skip_columns gRNA_sequence"
+    --skip_columns gRNA_sequence
 ```
-
+The `output.tsv` file will contain the DESeq2 results.
 
