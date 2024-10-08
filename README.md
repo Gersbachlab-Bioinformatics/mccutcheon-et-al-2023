@@ -38,3 +38,28 @@ Rscript run_deseq2.R \
 ```
 The `output.tsv` file will contain the DESeq2 results.
 
+
+## [preprocess_sc_rna_seq_screen.R](preprocess_sc_rna_seq_screen.R)
+Preprocess for analsyis scRNA-seq CRISPR screen 10X data computed with `cellranger`. This script used `Seurat::Read10X` function to load data in folder containing 3 files: `features.tsv.gz`, `barcodes.tsv.gz` and `matrix.mtx.gz`. It produces a QC'ed `.rds` file that can be used in [single_job_mast_sc_rna_seq_screen.R](single_job_mast_sc_rna_seq_screen.R) to find perturbed/DE genes.
+
+Run like this:
+```sh
+Rscript process_scRNAseq.R \
+    --input_dir `/path/to/input` \
+    --output_dir `/path/to/output` \
+    --donor `<DONOR_NAME>` \
+    --crispr_app `<CRISPRi/a>`
+```
+
+
+## [single_job_mast_sc_rna_seq_screen.R](single_job_mast_sc_rna_seq_screen.R) 
+Script to find perturbed/differentially expressed genes using the `FindMarkers` function in [Seurat](https://satijalab.org/seurat/) and [MAST](https://rglab.github.io/MAST/) to detect significant changes in transcription levels induced by a single perturbation.
+
+For example, to detect significant changes induce by the 3rd gRNA in the set, run this:
+```sh
+Rscript single_job_mast_sc_rna_seq_screen.R \
+    --job 3 \
+    --rds-files `/path/to/CRISPRa_D1_qc.rds /path/to/CRISPRa_D2_qc.rds /path/to/CRISPRa_D3_qc.rds` \
+    --output-basename /path/to/output_basename \
+    --min-umi-thres 4
+```
