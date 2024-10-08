@@ -1,6 +1,10 @@
 # Scripts to run certain analyses on McCutcheon et al. 2023 Nat. Genetics
 
-## DESeq2 analysis to detect significant differences in gRNA and gene expression abundances between two conditions
+## [alignment-22bpSE-no-reverse-comp.sh](alignment-22bpSE-no-reverse-comp.sh)
+Alignment shell script to run `Bowtie2` and compute counts with `samtools`.  
+
+## [run_deseq2.R](run_deseq2.R)
+DESeq2 analysis to detect significant differences in gRNA and gene expression abundances between two conditions. A combined table of raw counts is expected.
 
 Assuming a `path/to/counts_table.txt` counts table file like this:
 ```csv
@@ -30,7 +34,7 @@ Rscript run_deseq2.R \
     path/to/counts_table.txt \
     path/to/metadata.txt \
     path/to/output.tsv \
-    --skip_columns gRNA_sequence"
+    --skip_columns gRNA_sequence
 ```
-
+The `output.tsv` file will contain the DESeq2 results.
 
