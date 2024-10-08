@@ -5,6 +5,7 @@
 !*.txt
 !*.md
 !*.R
+!*.sh
 !.gitignore
 
 # And not these directories
