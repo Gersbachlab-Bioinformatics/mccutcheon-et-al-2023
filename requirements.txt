@@ -1,0 +1,6 @@
+- bowtie2==2.5.4
+- samtools==1.3.1
+- r-seurat>=4.1.1
+- chris-mcginnis-ucsf/DoubletFinder
+- bioconductor-deseq2==1.36.0
+
